@@ -1,16 +1,69 @@
-# React + Vite
+# Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Personal developer portfolio: single page, bilingual (ES/EN), built with Vite + React.
+No router, no state library, no UI framework — plain components and plain CSS.
 
-Currently, two official plugins are available:
+## Run it
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+```bash
+npm install
+npm run dev      # http://localhost:5173
+npm run build    # output in dist/
+npm run lint     # oxlint
+npm run preview  # serve the production build
+```
 
-## React Compiler
+## Where to edit
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+| What                     | File                                        |
+| ------------------------ | ------------------------------------------- |
+| Your name, bio, email, links | `src/data/profile.js`                    |
+| Projects                 | `src/data/projects.js`                       |
+| Skills                   | `src/data/skills.js`                         |
+| Every UI label (ES/EN)   | `src/data/strings.js`                        |
+| Colours, spacing, fonts  | `src/index.css` (`tokens` at the top)         |
+| One section's styles     | `src/components/<Component>.css`             |
 
-## Expanding the Oxlint configuration
+Everything marked `TODO` in those files is meant for you to fill in.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+## Adding a project
+
+Append one object to the `PROJECTS` array in `src/data/projects.js`:
+
+```js
+{
+  id: 'mi-app-android',
+  title: { es: 'Mi App Android', en: 'My Android App' },
+  tagline: { es: 'Corta descripción', en: 'Short description' },
+  description: { es: ['Un párrafo...'], en: ['One paragraph...'] },
+  type: 'android',              // web | android | desktop | other
+  status: 'wip',                // completed | wip | planned
+  year: 2026,
+  stack: ['Kotlin', 'Jetpack Compose'],
+  image: null,                  // 'images/projects/mi-app.png', null = free placeholder
+  links: { repo: 'https://github.com/...', demo: null, app: null },
+  highlights: { es: ['...'], en: ['...'] },
+  featured: false,
+}
+```
+
+That is the whole workflow. The card, the modal, the filters and the counts update on their
+own. A new `type` makes a new filter button appear as soon as one project uses it.
+There is a commented-out Android template at the bottom of the file.
+
+## Images
+
+Drop files in `public/images/projects/` and reference them as `images/projects/<file>`
+(leading `/` is added automatically in `getProjectImage`). While `image` is `null` you get
+the free placeholder for the project type.
+
+## Languages
+
+`LanguageProvider` keeps the language in `localStorage`, updates `<html lang>`, the page
+title and the meta description. Add a language by extending `src/i18n/languageContext.js`
+(`LANGUAGES`, `DEFAULT_LANGUAGE`) and the matching block in `strings.js`.
+
+## Deploying
+
+`netlify.toml` is included (build `npm run build`, publish `dist`, SPA fallback).
+Vercel detects Vite on its own and needs no config.

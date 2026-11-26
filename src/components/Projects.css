@@ -1,0 +1,61 @@
+.projects {
+  border-top: 1px solid var(--border);
+}
+
+.projects__filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.75rem;
+}
+
+.projects__filters button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.45rem 0.9rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--bg-elev);
+  color: var(--text-dim);
+  font-size: 0.88rem;
+  transition:
+    color var(--transition),
+    border-color var(--transition),
+    background var(--transition);
+}
+
+.projects__filters button:hover {
+  color: var(--text);
+  border-color: var(--border-strong);
+}
+
+.projects__filters button.is-active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--accent-ink);
+}
+
+.projects__count {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  opacity: 0.7;
+}
+
+.projects__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(19rem, 1fr));
+  gap: 1.25rem;
+}
+
+.projects__grid > li {
+  display: flex;
+}
+
+.projects__empty {
+  padding: 2.5rem;
+  border: 1px dashed var(--border-strong);
+  border-radius: var(--radius);
+  color: var(--text-faint);
+  text-align: center;
+}

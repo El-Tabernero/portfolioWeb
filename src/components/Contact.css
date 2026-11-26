@@ -1,0 +1,31 @@
+.contact {
+  border-top: 1px solid var(--border);
+}
+
+.contact__inner {
+  display: grid;
+  justify-items: start;
+  gap: 1.5rem;
+}
+
+.contact__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.contact__actions svg {
+  width: 1.1rem;
+  height: 1.1rem;
+}
+
+.contact__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.contact__links svg {
+  width: 1.1rem;
+  height: 1.1rem;
+}

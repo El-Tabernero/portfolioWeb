@@ -1,0 +1,29 @@
+.lang {
+  display: inline-flex;
+  padding: 2px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--bg-soft);
+}
+
+.lang button {
+  padding: 0.25rem 0.6rem;
+  border-radius: 999px;
+  color: var(--text-faint);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  transition:
+    background var(--transition),
+    color var(--transition);
+}
+
+.lang button:hover {
+  color: var(--text);
+}
+
+.lang button.is-active {
+  background: var(--accent);
+  color: var(--accent-ink);
+}

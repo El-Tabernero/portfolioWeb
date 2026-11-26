@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500" role="img" aria-label="Project placeholder">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1c2233" />
+      <stop offset="1" stop-color="#0d1017" />
+    </linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" fill="none" stroke="#ffffff" stroke-opacity="0.05" />
+    </pattern>
+  </defs>
+  <rect width="800" height="500" fill="url(#g)" />
+  <rect width="800" height="500" fill="url(#grid)" />
+  <g fill="none" stroke="#7dd3fc" stroke-width="4" stroke-opacity="0.75" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="300" y="150" width="200" height="130" rx="8" />
+    <path d="M300 240h200" />
+    <path d="M340 205h10M340 222h10" />
+    <circle cx="470" cy="210" r="5" />
+  </g>
+  <g fill="#7dd3fc" fill-opacity="0.5">
+    <rect x="330" y="300" width="60" height="6" rx="3" />
+    <rect x="400" y="300" width="40" height="6" rx="3" />
+    <rect x="330" y="318" width="80" height="6" rx="3" />
+  </g>
+  <text x="400" y="400" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="20" fill="#94a3b8">web</text>
+</svg>

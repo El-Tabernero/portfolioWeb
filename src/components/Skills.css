@@ -1,0 +1,28 @@
+.skills {
+  border-top: 1px solid var(--border);
+}
+
+.skills__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  gap: 1rem;
+}
+
+.skills__group {
+  padding: 1.4rem 1.5rem 1.6rem;
+}
+
+.skills__group:hover {
+  border-color: var(--border-strong);
+}
+
+.skills__group h3 {
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+
+.skills__group ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
