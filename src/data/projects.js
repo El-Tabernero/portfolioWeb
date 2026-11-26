@@ -44,11 +44,11 @@ export const PROJECTS = [
     status: 'completed',
     year: 2025,
     stack: ['Django 6', 'Python', 'SQLite', 'ReportLab', 'WhiteNoise', 'Gunicorn'],
-    image: null, // TODO: 'images/projects/stocksys.png'
+    image: 'https://i.imgur.com/iUvv6f3.png', // TODO: 'images/projects/stocksys.png'
     links: {
       repo: 'https://github.com/El-Tabernero/stocksys',
-      demo: null,
-      app: null,
+      demo: 'https://dojas325.pythonanywhere.com/dashboard/',
+      app: 'https://dojas325.pythonanywhere.com/dashboard/',
     },
     highlights: {
       es: [
@@ -92,11 +92,11 @@ export const PROJECTS = [
     status: 'wip',
     year: 2025,
     stack: ['React', 'JavaScript', 'CSS', 'TMDB API'],
-    image: null, // TODO: 'images/projects/carrete.png'
+    image: 'https://i.imgur.com/pGciRkm.png',
     links: {
-      repo: null, // TODO: paste the GitHub URL
-      demo: null,
-      app: null,
+      repo: 'https://github.com/El-Tabernero/carrete-tp1',
+      demo: 'https://carrete-tp1.vercel.app/',
+      app: 'https://carrete-tp1.vercel.app/',
     },
     highlights: {
       es: [
@@ -136,11 +136,11 @@ export const PROJECTS = [
     status: 'completed',
     year: 2024,
     stack: ['React', 'JavaScript', 'CSS'],
-    image: null, // TODO: 'images/projects/portraits.png'
+    image: 'https://i.imgur.com/Vkb6y4D.png', // TODO: 'images/projects/portraits.png'
     links: {
       repo: null, // TODO: paste the GitHub URL
-      demo: null, // TODO: paste the live URL
-      app: null,
+      demo: 'https://rd-portfolio-8lbn.onrender.com/', // TODO: paste the live URL
+      app: 'https://rd-portfolio-8lbn.onrender.com/',
     },
     highlights: {
       es: [

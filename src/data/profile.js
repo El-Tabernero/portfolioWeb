@@ -53,7 +53,7 @@ export const profile = {
 
   // TODO: path to a photo. Drop the file in public/images/ and reference it
   // from here, for example 'images/avatar.jpg'. Use null for a monogram.
-  avatar: null,
+  avatar: 'https://i.imgur.com/1fG5mqM.jpeg',
 
   email: 'rodri.dojas@email.com', // TODO
   github: 'https://github.com/El-Tabernero',
