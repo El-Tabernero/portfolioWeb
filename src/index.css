@@ -18,6 +18,17 @@
   --accent-strong: #38bdf8;
   --accent-ink: #04121b;
 
+  /* Paleta neon compartida (barras del header + nombre del hero). */
+  --neon-violet: #a855f7;
+  --neon-fuchsia: #ec4899;
+  --neon-blue: #38bdf8;
+  --neon-gradient: linear-gradient(
+    115deg,
+    var(--neon-violet) 0%,
+    var(--neon-fuchsia) 38%,
+    var(--neon-blue) 100%
+  );
+
   --radius-sm: 9px;
   --radius: 14px;
   --radius-lg: 20px;
@@ -182,6 +193,37 @@ ul {
 .section__lead {
   color: var(--text-dim);
   font-size: 1.05rem;
+}
+
+/* Shared label swap (navbar brand + hero name) --------------------------- */
+
+.label-swap {
+  animation: label-in 260ms ease both;
+}
+
+.label-swap--out {
+  animation: label-out 260ms ease both;
+}
+
+@keyframes label-out {
+  to {
+    opacity: 0;
+    transform: translateY(-0.45rem) scale(0.96);
+    filter: blur(2px);
+  }
+}
+
+@keyframes label-in {
+  from {
+    opacity: 0;
+    transform: translateY(0.45rem) scale(0.96);
+    filter: blur(2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
 }
 
 /* Buttons ---------------------------------------------------------------- */

@@ -5,6 +5,8 @@
   display: grid;
   place-items: center;
   padding: clamp(0.75rem, 3vw, 2.5rem);
+  /* El dialog ya reserva el 90% de la altura: poco padding vertical para no desbordar. */
+  padding-block: clamp(0.5rem, 2vh, 1rem);
   background: color-mix(in srgb, #04060a 78%, transparent);
   backdrop-filter: blur(6px);
   animation: modal-fade 160ms ease;
@@ -15,8 +17,11 @@
   position: relative;
   display: grid;
   grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  /* Altura definida: sin ella la fila crece con el contenido y se recorta. */
+  grid-template-rows: minmax(0, 1fr);
   width: min(68rem, 100%);
-  max-height: min(90vh, 60rem);
+  height: min(90vh, 60rem);
+  height: min(90dvh, 60rem);
   background: var(--bg-elev);
   border: 1px solid var(--border-strong);
   border-radius: var(--radius-lg);
@@ -47,6 +52,7 @@
 }
 
 .modal__media {
+  min-height: 0;
   background: var(--bg-soft);
   border-right: 1px solid var(--border);
   overflow: hidden;
@@ -59,9 +65,12 @@
 }
 
 .modal__content {
+  min-height: 0;
   padding: clamp(1.5rem, 3vw, 2.5rem);
   overflow-y: auto;
   overscroll-behavior: contain;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-strong) transparent;
 }
 
 .modal__content p {
@@ -74,11 +83,27 @@
   padding-right: 2.5rem;
 }
 
-.modal__badges {
+/* Una sola fila: si no entra, se desliza en vez de apilarse y comer altura. */
+.modal__badges,
+.modal__tags {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  align-items: center;
   gap: 0.4rem;
-  margin-bottom: 0.9rem;
+  padding-bottom: 0.25rem;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-strong) transparent;
+}
+
+.modal__badges > *,
+.modal__tags > * {
+  flex: 0 0 auto;
+}
+
+.modal__badges {
+  margin-bottom: 0.65rem;
 }
 
 .modal__tagline {
@@ -125,8 +150,6 @@
 }
 
 .modal__tags {
-  display: flex;
-  flex-wrap: wrap;
   gap: 0.45rem;
 }
 
@@ -178,17 +201,33 @@
 
 @media (max-width: 860px) {
   .modal__dialog {
-    grid-template-columns: 1fr;
-    max-height: 92vh;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto minmax(0, 1fr);
   }
 
   .modal__media {
     aspect-ratio: 16 / 9;
+    max-height: 32dvh;
     border-right: none;
     border-bottom: 1px solid var(--border);
   }
 
   .modal__nav {
     flex-wrap: wrap;
+  }
+}
+
+/* En pantallas bajas, menos padding para que quede más área de lectura. */
+@media (max-height: 680px) {
+  .modal__content {
+    padding: 1.25rem 1.5rem;
+  }
+
+  .modal__block {
+    margin-top: 1.25rem;
+  }
+
+  .modal__nav {
+    margin-top: 1.5rem;
   }
 }

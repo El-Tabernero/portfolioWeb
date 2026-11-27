@@ -1,17 +1,20 @@
 import { useEffect, useState } from 'react'
 import { profile } from '../data/profile.js'
+import useCyclingLabel from '../hooks/useCyclingLabel.js'
 import { useLanguage } from '../i18n/languageContext.js'
 import LanguageToggle from './LanguageToggle.jsx'
 import { CloseIcon, MenuIcon } from './icons.jsx'
 import './Navbar.css'
 
 const SECTION_IDS = ['about', 'skills', 'projects', 'contact']
+const BRAND_LABELS = [profile.name, 'Developer']
 
 export default function Navbar() {
   const { t } = useLanguage()
   const [open, setOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const [active, setActive] = useState('')
+  const { label: brandLabel, animating: brandAnimating } = useCyclingLabel(BRAND_LABELS)
 
   const links = SECTION_IDS.map((id) => ({ id, label: t('nav', id) }))
 
@@ -56,12 +59,23 @@ export default function Navbar() {
 
   return (
     <header className={`navbar${scrolled ? ' navbar--scrolled' : ''}`}>
+      <div className="navbar__neon" aria-hidden="true">
+        <span className="navbar__neon-bar" />
+        <span className="navbar__neon-bar" />
+        <span className="navbar__neon-bar" />
+      </div>
       <div className="container navbar__inner">
         <a className="navbar__brand" href="#top" onClick={() => setOpen(false)}>
           <span className="navbar__mark" aria-hidden="true">
             {profile.name.trim().charAt(0).toUpperCase() || '·'}
           </span>
-          <span className="navbar__name">{profile.name}</span>
+          <span
+            className={`navbar__name label-swap${brandAnimating ? ' label-swap--out' : ''}`}
+            aria-live="polite"
+            aria-atomic="true"
+          >
+            {brandLabel}
+          </span>
         </a>
 
         <nav

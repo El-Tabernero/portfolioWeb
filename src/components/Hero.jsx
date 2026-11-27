@@ -1,12 +1,16 @@
 import { profile } from '../data/profile.js'
+import useCyclingLabel from '../hooks/useCyclingLabel.js'
 import { pickLang, useLanguage } from '../i18n/languageContext.js'
 import { ArrowDownIcon, GithubIcon, LinkedInIcon, MailIcon } from './icons.jsx'
 import './Hero.css'
+
+const NAME_LABELS = [profile.name, 'Developer']
 
 export default function Hero() {
   const { lang, t } = useLanguage()
   const role = pickLang(profile.role, lang)
   const currently = pickLang(profile.currently, lang)
+  const { label: nameLabel, animating: nameAnimating } = useCyclingLabel(NAME_LABELS)
 
   return (
     <section className="hero" id="top">
@@ -15,7 +19,14 @@ export default function Hero() {
         <div className="hero__content">
           <p className="eyebrow">{role}</p>
           <h1 className="hero__title">
-            {t('hero', 'intro')} <span className="hero__name">{profile.name}</span>
+            {t('hero', 'intro')}{' '}
+            <span
+              className={`hero__name label-swap${nameAnimating ? ' label-swap--out' : ''}`}
+              aria-live="polite"
+              aria-atomic="true"
+            >
+              <span className="hero__name-neon">{nameLabel}</span>
+            </span>
           </h1>
           <p className="hero__bio">{pickLang(profile.bio, lang)}</p>
 

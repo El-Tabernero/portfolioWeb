@@ -37,8 +37,32 @@
   margin-block: 0.15rem;
 }
 
+/* Una sola luz neon: mismo degradado que el header, sin barras repetidas. */
 .hero__name {
-  color: var(--accent);
+  display: inline-block;
+  min-width: 12ch;
+}
+
+.hero__name-neon {
+  background: var(--neon-gradient);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 8px color-mix(in srgb, var(--neon-fuchsia) 55%, transparent))
+    drop-shadow(0 0 22px color-mix(in srgb, var(--neon-blue) 35%, transparent));
+  animation: neon-flow 5s ease-in-out infinite;
+}
+
+@keyframes neon-flow {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
 }
 
 .hero__bio {
